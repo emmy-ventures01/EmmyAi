@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmmyAi - Sign Up or Login</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 50px;
+  }
+
+  button {
+    width: 250px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .signup-btn {
+    background: white;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .login-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+  }
+
+  .signup-btn:hover {
+    background: #ccc;
+  }
+
+  .login-btn:hover {
+    background: white;
+    color: black;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Welcome to EmmyAi</h1>
+  <p>Sign up to create a new account or log in if you already have one</p>
+
+  <button class="signup-btn" onclick="window.location.href='register.html'">Sign Up</button>
+  <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+
+</body>
+</html>
