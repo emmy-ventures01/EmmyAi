@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmmyAi - Login</title>
+<style>
+  body {
+    background: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    max-width: 350px;
+  }
+
+  input {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 12px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .message {
+    margin-top: 20px;
+    background: #002244;
+    padding: 12px;
+    border-radius: 8px;
+    display: none;
+    width: 80%;
+    max-width: 350px;
+  }
+
+  p {
+    margin-top: 15px;
+  }
+
+  a {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Welcome Back to EmmyAi</h1>
+
+<form id="loginForm">
+  <input type="text" id="username" placeholder="Enter Username" required>
+  <input type="password" id="password" placeholder="Enter Password" required>
+  <button type="submit">Login</button>
+</form>
+
+<div class="message" id="loginMessage"></div>
+
+<p>Don't have an account? <a href="register.html">Sign Up</a></p>
+
+<script>
+  const form = document.getElementById('loginForm');
+  const message = document.getElementById('loginMessage');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    const storedPassword = localStorage.getItem(username);
+
+    if (!storedPassword) {
+      message.style.display = "block";
+      message.style.background = "#441111";
+      message.textContent = "⚠️ Account not found.";
+    } else if (storedPassword !== password) {
+      message.style.display = "block";
+      message.style.background = "#661111";
+      message.textContent = "❌ Invalid credentials! Please try again.";
+    } else {
+      message.style.display = "block";
+      message.style.background = "#003366";
+      message.textContent = "✅ Login successful! Redirecting to your dashboard...";
+
+      // redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = "main.html"; // your EmmyAi main app page
+      }, 2000);
+    }
+  });
+</script>
+
+</body>
+</html>
