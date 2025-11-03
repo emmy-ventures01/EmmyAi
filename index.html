@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmmyAi Splash</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  svg {
+    width: 300px;
+    height: 300px;
+  }
+
+  .circle-background {
+    fill: #001f4d; /* deep blue background */
+  }
+
+  .circle-group line {
+    stroke: white;
+    stroke-width: 6; /* thicker lines for fatter circles */
+  }
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 200 200">
+  <!-- Deep blue circle background -->
+  <circle class="circle-background" cx="100" cy="100" r="95"/>
+
+  <g class="circle-group" transform="translate(100,100)">
+    <!-- 12 radial lines -->
+    <line x1="0" y1="-85" x2="0" y2="-95"/>
+    <line x1="0" y1="85" x2="0" y2="95"/>
+    <line x1="-85" y1="0" x2="-95" y2="0"/>
+    <line x1="85" y1="0" x2="95" y2="0"/>
+    <line x1="-60" y1="-60" x2="-67" y2="-67"/>
+    <line x1="60" y1="-60" x2="67" y2="-67"/>
+    <line x1="-60" y1="60" x2="-67" y2="67"/>
+    <line x1="60" y1="60" x2="67" y2="67"/>
+    <line x1="0" y1="-65" x2="0" y2="-75"/>
+    <line x1="0" y1="65" x2="0" y2="75"/>
+    <line x1="-65" y1="0" x2="-75" y2="0"/>
+    <line x1="65" y1="0" x2="75" y2="0"/>
+  </g>
+</svg>
+
+<script>
+  const group = document.querySelector('.circle-group');
+  const bgCircle = document.querySelector('.circle-background');
+  let angle = 0;
+  let scale = 1;
+
+  function animate() {
+    angle += 0.03; // constant spin speed
+    scale -= 0.004; // shrink gradually
+    if(scale < 0.2) scale = 0.2;
+
+    group.setAttribute('transform', `translate(100,100) rotate(${angle * 180/Math.PI}) scale(${scale})`);
+    bgCircle.setAttribute('r', 95 * scale); // shrink the background circle together
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Redirect after 8 seconds to Sign Up page
+  setTimeout(()=> {
+    window.location.href = 'signup.html'; // updated to your sign-up page
+  }, 8000);
+</script>
+
+</body>
+</html>
